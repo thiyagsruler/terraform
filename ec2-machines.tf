@@ -35,15 +35,3 @@ resource "aws_instance" "webapp3" {
   }
   user_data = file("app-userdata.sh")
 }
-resource "aws_instance" "webapp4" {
-  ami                         = var.ami
-  instance_type               = "t2.micro"
-  associate_public_ip_address = "true"
-  subnet_id                   = aws_subnet.PublicAZD.id
-  vpc_security_group_ids      = [aws_security_group.WebServer.id]
-  key_name                    = var.key_name
-  tags = {
-    Name = "ion-WebApp4"
-  }
-  user_data = file("app-userdata.sh")
-}
